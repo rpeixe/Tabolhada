@@ -106,7 +106,7 @@ script = ExtResource( 2 )
 wait_time = 0.5
 
 [node name="LongTimer" type="Timer" parent="Spawner"]
-wait_time = 5.0
+wait_time = 2.0
 autostart = true
 
 [node name="Borders" type="Node2D" parent="."]
