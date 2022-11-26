@@ -8,8 +8,8 @@ signal bubble_popped(bubble_value)
 
 func _ready():
 	rng.randomize()
-	var x_velocity = rng.randf_range(-100, 100)
-	var y_velocity = rng.randf_range(-100, -200)
+	var x_velocity = rng.randf_range(-150, 150)
+	var y_velocity = rng.randf_range(-200, -300)
 	apply_central_impulse(Vector2(x_velocity, y_velocity))
 
 
