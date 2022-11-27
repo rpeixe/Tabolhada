@@ -1,17 +1,18 @@
 extends Node
 
 
-# Declare member variables here. Examples:
 var rng = RandomNumberGenerator.new()
 var num_1
 var num_2
 var result
 var score = 0
 var multiplier = 1
+var pop_sound_correct = preload("res://scenes/PopSoundCorrect.tscn")
+var pop_sound_wrong = preload("res://scenes/PopSoundWrong.tscn")
 
 signal result_changed(value)
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	rng.randomize()
 	randomize_numbers()
@@ -38,19 +39,23 @@ func increase_score():
 	$UI/Scoreboard/MarginContainer/VBoxContainer/Score.text = str(score)
 
 func on_bubble_popped(value):
+	var sound
+	add_child(sound)
 	if value == result:
 		increase_score()
+		sound = pop_sound_correct.instance()
 	else:
 		set_multiplier(1)
+		sound = pop_sound_wrong.instance()
+	add_child(sound)
 	randomize_numbers()
-
 
 func _on_ScoreResetTimer_timeout():
 	randomize_numbers()
 
 
 func _on_GameTimer_timeout():
-	$UI/GameOverPopup/CenterContainer/VBoxContainer/FinalScore.text = str(score)
+	$UI/GameOverPopup/MarginContainer/VBoxContainer/FinalScore.text = str(score)
 	$UI/GameOverPopup.popup_centered()
 	get_tree().paused = true
 

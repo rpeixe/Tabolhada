@@ -38,12 +38,14 @@ func init(num):
 	value = num
 	$Label.text = str(value)
 
+func pop_bubble():
+	emit_signal("bubble_popped", value)
+	queue_free()
+	
 
 func _on_Bubble_input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		emit_signal("bubble_popped", value)
-		queue_free()
-
+		pop_bubble()
 
 func _on_Timer_timeout():
 	queue_free()

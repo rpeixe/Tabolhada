@@ -11,7 +11,6 @@ bounce = 1.0
 radius = 53.0094
 
 [node name="Bubble" type="RigidBody2D"]
-position = Vector2( 640, 600 )
 input_pickable = true
 mode = 2
 physics_material_override = SubResource( 2 )

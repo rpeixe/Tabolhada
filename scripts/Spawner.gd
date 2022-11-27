@@ -32,6 +32,7 @@ func _on_ShortTimer_timeout():
 	
 	$Bubbles.add_child(new_bubble)
 	new_bubble.connect("bubble_popped", get_parent(), "on_bubble_popped")
+	new_bubble.global_position = global_position
 	
 	if count == guaranteed_bubble:
 		bubble_value = current_result
