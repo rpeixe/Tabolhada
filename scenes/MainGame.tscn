@@ -3,18 +3,7 @@
 [ext_resource path="res://scripts/MainGame.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Spawner.gd" type="Script" id=2]
 [ext_resource path="res://themes/MainTheme.tres" type="Theme" id=3]
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.980392, 0.501961, 0.831373, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[ext_resource path="res://themes/BoxStyle.tres" type="StyleBox" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 10 )
@@ -24,85 +13,6 @@ extents = Vector2( 10, 360 )
 
 [node name="MainGame" type="Node"]
 script = ExtResource( 1 )
-
-[node name="UI" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-theme = ExtResource( 3 )
-
-[node name="Multiplication" type="Label" parent="UI"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -23.5
-margin_right = 20.0
-margin_bottom = 23.5
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 20, 17.5 )
-align = 1
-valign = 1
-
-[node name="Score" type="Label" parent="UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 14.0
-text = "0"
-
-[node name="Timer" type="Label" parent="UI"]
-margin_right = 40.0
-margin_bottom = 14.0
-
-[node name="Multiplier" type="Label" parent="UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -120.0
-margin_right = -80.0
-margin_bottom = 35.0
-text = "1x"
-
-[node name="GameOverPopup" type="PopupDialog" parent="UI"]
-pause_mode = 2
-margin_right = 320.0
-margin_bottom = 160.0
-custom_styles/panel = SubResource( 3 )
-popup_exclusive = true
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/GameOverPopup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPopup/CenterContainer"]
-margin_left = 69.0
-margin_top = 11.0
-margin_right = 251.0
-margin_bottom = 148.0
-
-[node name="GameOverLabel" type="Label" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
-margin_right = 182.0
-margin_bottom = 41.0
-theme = ExtResource( 3 )
-text = "Fim de Jogo"
-align = 1
-valign = 1
-
-[node name="FinalScore" type="Label" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
-margin_top = 45.0
-margin_right = 182.0
-margin_bottom = 86.0
-grow_horizontal = 2
-align = 1
-valign = 1
-
-[node name="GameOverButton" type="Button" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
-margin_top = 90.0
-margin_right = 182.0
-margin_bottom = 137.0
-text = "Sair"
 
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2( 640, 600 )
@@ -114,6 +24,8 @@ wait_time = 0.65
 [node name="LongTimer" type="Timer" parent="Spawner"]
 wait_time = 2.0
 autostart = true
+
+[node name="Bubbles" type="Node" parent="Spawner"]
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -150,9 +62,134 @@ autostart = true
 wait_time = 20.0
 autostart = true
 
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+
+[node name="Multiplication" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -20.0
+margin_right = 54.0
+margin_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 20, 17.5 )
+align = 1
+valign = 1
+
+[node name="Scoreboard" type="PanelContainer" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -203.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 157.0
+custom_styles/panel = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Scoreboard"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 180.0
+margin_bottom = 134.0
+
+[node name="Label" type="Label" parent="UI/Scoreboard/VBoxContainer"]
+margin_right = 177.0
+margin_bottom = 41.0
+text = "PONTUAÇÃO"
+align = 1
+valign = 1
+
+[node name="Score" type="Label" parent="UI/Scoreboard/VBoxContainer"]
+margin_top = 45.0
+margin_right = 177.0
+margin_bottom = 86.0
+text = "0"
+align = 1
+valign = 1
+
+[node name="Multiplier" type="Label" parent="UI/Scoreboard/VBoxContainer"]
+margin_top = 90.0
+margin_right = 177.0
+margin_bottom = 131.0
+text = "1x"
+align = 1
+valign = 1
+
+[node name="Timer" type="PanelContainer" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 125.0
+margin_bottom = 112.0
+custom_styles/panel = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Timer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 102.0
+margin_bottom = 89.0
+
+[node name="TimerLabel" type="Label" parent="UI/Timer/VBoxContainer"]
+margin_right = 99.0
+margin_bottom = 41.0
+text = "TEMPO"
+align = 1
+valign = 1
+
+[node name="Time" type="Label" parent="UI/Timer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 99.0
+margin_bottom = 86.0
+align = 1
+valign = 1
+
+[node name="GameOverPopup" type="PopupDialog" parent="UI"]
+pause_mode = 2
+margin_right = 267.0
+margin_bottom = 158.0
+custom_styles/panel = ExtResource( 4 )
+popup_exclusive = true
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/GameOverPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPopup/CenterContainer"]
+margin_left = 42.0
+margin_top = 10.0
+margin_right = 224.0
+margin_bottom = 147.0
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
+margin_right = 182.0
+margin_bottom = 41.0
+theme = ExtResource( 3 )
+text = "Fim de Jogo"
+align = 1
+valign = 1
+
+[node name="FinalScore" type="Label" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 182.0
+margin_bottom = 86.0
+grow_horizontal = 2
+align = 1
+valign = 1
+
+[node name="GameOverButton" type="Button" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 182.0
+margin_bottom = 137.0
+text = "Sair"
+
 [connection signal="result_changed" from="." to="Spawner" method="_on_MainGame_result_changed"]
-[connection signal="button_up" from="UI/GameOverPopup/CenterContainer/VBoxContainer/GameOverButton" to="." method="_on_GameOverButton_button_up"]
 [connection signal="timeout" from="Spawner/ShortTimer" to="Spawner" method="_on_ShortTimer_timeout"]
 [connection signal="timeout" from="Spawner/LongTimer" to="Spawner" method="_on_LongTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="ScoreResetTimer" to="." method="_on_ScoreResetTimer_timeout"]
+[connection signal="button_up" from="UI/GameOverPopup/CenterContainer/VBoxContainer/GameOverButton" to="." method="_on_GameOverButton_button_up"]

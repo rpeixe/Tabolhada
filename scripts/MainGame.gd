@@ -17,7 +17,7 @@ func _ready():
 	randomize_numbers()
 
 func _process(delta):
-	$UI/Timer.text = str(int($GameTimer.time_left))
+	$UI/Timer/VBoxContainer/Time.text = str(int($GameTimer.time_left))
 
 func randomize_numbers():
 	num_1 = rng.randi_range(1, 10)
@@ -29,13 +29,13 @@ func randomize_numbers():
 
 func set_multiplier(value):
 	multiplier = value
-	$UI/Multiplier.text = str(value) + "x"
+	$UI/Scoreboard/VBoxContainer/Multiplier.text = str(value) + "x"
 
 func increase_score():
 	score += multiplier
 	if multiplier < 5:
 		set_multiplier(multiplier + 1)
-	$UI/Score.text = str(score)
+	$UI/Scoreboard/VBoxContainer/Score.text = str(score)
 
 func on_bubble_popped(value):
 	if value == result:
