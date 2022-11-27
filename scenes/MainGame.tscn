@@ -6,11 +6,11 @@
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.980392, 0.501961, 0.831373, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0.996078, 0.870588, 0.439216, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -72,26 +72,36 @@ margin_bottom = 160.0
 custom_styles/panel = SubResource( 3 )
 popup_exclusive = true
 
-[node name="GameOverLabel" type="Label" parent="UI/GameOverPopup"]
+[node name="CenterContainer" type="CenterContainer" parent="UI/GameOverPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPopup/CenterContainer"]
 margin_left = 69.0
-margin_top = 13.0
-margin_right = 253.0
-margin_bottom = 48.0
+margin_top = 11.0
+margin_right = 251.0
+margin_bottom = 148.0
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
+margin_right = 182.0
+margin_bottom = 41.0
 theme = ExtResource( 3 )
 text = "Fim de Jogo"
+align = 1
+valign = 1
 
-[node name="FinalScore" type="Label" parent="UI/GameOverPopup"]
-margin_left = 130.0
-margin_top = 68.0
-margin_right = 184.0
-margin_bottom = 103.0
+[node name="FinalScore" type="Label" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 182.0
+margin_bottom = 86.0
 grow_horizontal = 2
+align = 1
+valign = 1
 
-[node name="GameOverButton" type="Button" parent="UI/GameOverPopup"]
-margin_left = 118.0
-margin_top = 118.0
-margin_right = 193.0
-margin_bottom = 159.0
+[node name="GameOverButton" type="Button" parent="UI/GameOverPopup/CenterContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 182.0
+margin_bottom = 137.0
 text = "Sair"
 
 [node name="Spawner" type="Node2D" parent="."]
@@ -141,7 +151,7 @@ wait_time = 20.0
 autostart = true
 
 [connection signal="result_changed" from="." to="Spawner" method="_on_MainGame_result_changed"]
-[connection signal="button_up" from="UI/GameOverPopup/GameOverButton" to="." method="_on_GameOverButton_button_up"]
+[connection signal="button_up" from="UI/GameOverPopup/CenterContainer/VBoxContainer/GameOverButton" to="." method="_on_GameOverButton_button_up"]
 [connection signal="timeout" from="Spawner/ShortTimer" to="Spawner" method="_on_ShortTimer_timeout"]
 [connection signal="timeout" from="Spawner/LongTimer" to="Spawner" method="_on_LongTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]

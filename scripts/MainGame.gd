@@ -50,7 +50,7 @@ func _on_ScoreResetTimer_timeout():
 
 
 func _on_GameTimer_timeout():
-	$UI/GameOverPopup/FinalScore.text = str(score)
+	$UI/GameOverPopup/CenterContainer/VBoxContainer/FinalScore.text = str(score)
 	$UI/GameOverPopup.popup_centered()
 	get_tree().paused = true
 
