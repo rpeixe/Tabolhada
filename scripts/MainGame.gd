@@ -40,7 +40,6 @@ func increase_score():
 
 func on_bubble_popped(value):
 	var sound
-	add_child(sound)
 	if value == result:
 		increase_score()
 		sound = pop_sound_correct.instance()
