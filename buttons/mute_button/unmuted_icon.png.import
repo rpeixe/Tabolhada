@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bolha.png-07fcc17df176a745fa29779b96b2ffee.stex"
+path="res://.import/unmuted_icon.png-34ef87f8f427424f01a0c2944854cf8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Bolha.png"
-dest_files=[ "res://.import/Bolha.png-07fcc17df176a745fa29779b96b2ffee.stex" ]
+source_file="res://buttons/mute_button/unmuted_icon.png"
+dest_files=[ "res://.import/unmuted_icon.png-34ef87f8f427424f01a0c2944854cf8f.stex" ]
 
 [params]
 

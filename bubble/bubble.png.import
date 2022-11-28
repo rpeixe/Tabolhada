@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unmuted_icon.png-14c4f9cfcec80a60f0dc7b5296db3f23.stex"
+path="res://.import/bubble.png-45cbaad1fb26b71b9b336050bbbea040.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/unmuted_icon.png"
-dest_files=[ "res://.import/unmuted_icon.png-14c4f9cfcec80a60f0dc7b5296db3f23.stex" ]
+source_file="res://bubble/bubble.png"
+dest_files=[ "res://.import/bubble.png-45cbaad1fb26b71b9b336050bbbea040.stex" ]
 
 [params]
 
