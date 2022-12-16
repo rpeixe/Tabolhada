@@ -4,6 +4,7 @@ extends RigidBody2D
 var value
 var rng = RandomNumberGenerator.new()
 signal bubble_popped(bubble_value)
+const max_bob = 0.05
 var colors = [
 	Color.red,
 	Color.blue,
@@ -33,6 +34,9 @@ func _ready():
 	launch()
 	set_random_color()
 
+func _physics_process(delta):
+	$Sprite.scale.x = 1 - abs(max_bob * sin($BobTimer.time_left))
+	$Sprite.scale.y = 1 - sin(max_bob * sin($BobTimer.time_left))
 
 func init(num):
 	value = num
@@ -47,5 +51,5 @@ func _on_Bubble_input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		pop_bubble()
 
-func _on_Timer_timeout():
+func _on_Lifetime_timeout():
 	queue_free()

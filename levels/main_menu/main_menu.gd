@@ -6,7 +6,7 @@ func _ready():
 
 
 func _on_StartGame_button_up():
-	get_tree().change_scene("res://scenes/MainGame.tscn")
+	get_tree().change_scene("res://levels/main_game/main_game.tscn")
 
 
 func _on_QuitGame_button_up():

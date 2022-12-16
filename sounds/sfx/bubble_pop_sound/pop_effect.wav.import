@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/bubble_pop_effect.wav-5dc71e0cc46f48ddcd94e6429065693d.sample"
+path="res://.import/pop_effect.wav-3f86f4274043cefb161797159fc2c3e4.sample"
 
 [deps]
 
-source_file="res://sounds/sfx/bubble_pop_effect.wav"
-dest_files=[ "res://.import/bubble_pop_effect.wav-5dc71e0cc46f48ddcd94e6429065693d.sample" ]
+source_file="res://sounds/sfx/bubble_pop_sound/pop_effect.wav"
+dest_files=[ "res://.import/pop_effect.wav-3f86f4274043cefb161797159fc2c3e4.sample" ]
 
 [params]
 

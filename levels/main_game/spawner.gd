@@ -1,12 +1,14 @@
-extends Node2D
+extends Node
 
 
 var rng = RandomNumberGenerator.new()
-var bubbles_per_wave = 5
+var bubbles_per_wave = 6
 var count = 0
-var bubble = preload("res://scenes/Bubble.tscn")
+var bubble = preload("res://bubble/bubble.tscn")
 var guaranteed_bubble
 var current_result
+onready var spawner = [$Spawner1, $Spawner2, $Spawner3]
+var current_spawner = 0
 
 
 func random_bubble_value():
@@ -32,7 +34,8 @@ func _on_ShortTimer_timeout():
 	
 	$Bubbles.add_child(new_bubble)
 	new_bubble.connect("bubble_popped", get_parent(), "on_bubble_popped")
-	new_bubble.global_position = global_position
+	new_bubble.global_position = spawner[current_spawner % 3].global_position
+	current_spawner += 1
 	
 	if count == guaranteed_bubble:
 		bubble_value = current_result
