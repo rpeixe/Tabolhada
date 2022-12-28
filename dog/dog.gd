@@ -16,13 +16,19 @@ func on_wrong_bubble_popped():
 func _on_Sprite_animation_finished():
 	sprite.play("idle")
 
+func play_bark_sound():
+		var sound = bark.instance()
+		add_child(sound)
+		play_sound = false
+		
+func play_cry_sound():
+		var sound = cry.instance()
+		add_child(sound)
+		play_sound = false
+
 func _process(delta):
 	if play_sound == true:
 		if sprite.animation == "happy" and sprite.frame == 4:
-			var sound = bark.instance()
-			add_child(sound)
-			play_sound = false
+			play_bark_sound()
 		if sprite.animation == "sad" and sprite.frame == 5:
-			var sound = cry.instance()
-			add_child(sound)
-			play_sound = false
+			play_cry_sound()

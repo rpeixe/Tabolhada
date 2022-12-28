@@ -9,6 +9,7 @@ signal wrong_bubble_popped()
 const max_bob = 0.05
 onready var sprite = $Sprite
 onready var label = $Label
+onready var collision_shape = $CollisionShape2D
 onready var pop_sound_correct = preload("res://sounds/sfx/bubble_pop_sound/pop_sound_correct.tscn")
 onready var pop_sound_wrong = preload("res://sounds/sfx/bubble_pop_sound/pop_sound_wrong.tscn")
 var colors = [
@@ -53,6 +54,8 @@ func pop_bubble():
 	var sound
 	var animation
 	label.queue_free()
+	collision_shape.queue_free()
+	
 	if value == correct_value:
 		sound = pop_sound_correct.instance()
 		emit_signal("correct_bubble_popped")

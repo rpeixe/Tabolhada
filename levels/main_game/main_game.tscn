@@ -80,6 +80,48 @@ position = Vector2( 640, 600 )
 [node name="Spawner3" type="Node2D" parent="Spawner"]
 position = Vector2( 920, 600 )
 
+[node name="QuestionBoard" type="KinematicBody2D" parent="."]
+position = Vector2( 640, 360 )
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestionBoard"]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Panel" type="Panel" parent="QuestionBoard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -32.5
+margin_right = 55.0
+margin_bottom = 32.5
+rect_min_size = Vector2( 110, 65 )
+mouse_filter = 2
+
+[node name="Multiplication" type="Label" parent="QuestionBoard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -20.0
+margin_right = 54.0
+margin_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 20, 17.5 )
+theme = ExtResource( 6 )
+text = "10x10"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="QuestionBoard"]
+wait_time = 6.283
+autostart = true
+
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -101,6 +143,7 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = 200.0
 margin_bottom = 99.0
+mouse_filter = 2
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -111,10 +154,12 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 192.0
 margin_bottom = 91.0
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Scoreboard/MarginContainer/VBoxContainer"]
 margin_right = 187.0
 margin_bottom = 41.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="UI/Scoreboard/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 122.0
@@ -137,6 +182,7 @@ valign = 1
 margin_top = 45.0
 margin_right = 187.0
 margin_bottom = 86.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="UI/Scoreboard/MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 105.0
@@ -160,11 +206,13 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 175.0
 margin_bottom = 120.0
+mouse_filter = 2
 custom_constants/separation = 10
 
 [node name="Buttons" type="VBoxContainer" parent="UI/HBoxContainer"]
 margin_right = 50.0
 margin_bottom = 104.0
+mouse_filter = 2
 
 [node name="HomeButton" type="TextureButton" parent="UI/HBoxContainer/Buttons"]
 margin_right = 50.0
@@ -187,6 +235,7 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = 112.0
 margin_bottom = 101.0
+mouse_filter = 2
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -197,6 +246,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 104.0
 margin_bottom = 93.0
+mouse_filter = 2
 
 [node name="TimerLabel" type="Label" parent="UI/HBoxContainer/Timer/MarginContainer/VBoxContainer"]
 margin_right = 99.0
@@ -308,48 +358,6 @@ margin_top = 90.0
 margin_right = 182.0
 margin_bottom = 137.0
 text = "Sair"
-
-[node name="QuestionBoard" type="KinematicBody2D" parent="."]
-position = Vector2( 640, 360 )
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestionBoard"]
-position = Vector2( 0, -0.5 )
-shape = SubResource( 3 )
-disabled = true
-
-[node name="Panel" type="Panel" parent="QuestionBoard"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -55.0
-margin_top = -32.5
-margin_right = 55.0
-margin_bottom = 32.5
-rect_min_size = Vector2( 110, 65 )
-mouse_filter = 2
-
-[node name="Multiplication" type="Label" parent="QuestionBoard"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -54.0
-margin_top = -20.0
-margin_right = 54.0
-margin_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 20, 17.5 )
-theme = ExtResource( 6 )
-text = "10x10"
-align = 1
-valign = 1
-
-[node name="Timer" type="Timer" parent="QuestionBoard"]
-wait_time = 6.283
-autostart = true
 
 [connection signal="result_changed" from="." to="Spawner" method="_on_MainGame_result_changed"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
