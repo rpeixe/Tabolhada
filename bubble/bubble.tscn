@@ -1,11 +1,29 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://bubble/bubble.gd" type="Script" id=1]
 [ext_resource path="res://themes/MainTheme.tres" type="Theme" id=2]
-[ext_resource path="res://bubble/bubble.png" type="Texture" id=3]
+[ext_resource path="res://bubble/sprites/bubble.png" type="Texture" id=3]
+[ext_resource path="res://bubble/sprites/pop_correct/3.png" type="Texture" id=4]
+[ext_resource path="res://bubble/sprites/pop_correct/1.png" type="Texture" id=5]
+[ext_resource path="res://bubble/sprites/pop_correct/2.png" type="Texture" id=6]
+[ext_resource path="res://bubble/sprites/pop_correct/4.png" type="Texture" id=7]
+[ext_resource path="res://bubble/sprites/pop_correct/5.png" type="Texture" id=8]
 
 [sub_resource type="PhysicsMaterial" id=2]
 bounce = 1.0
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "pop_correct",
+"speed": 20.0
+} ]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 53.0094
@@ -16,9 +34,9 @@ mode = 2
 physics_material_override = SubResource( 2 )
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -5.96046e-08, -5.96046e-08 )
-texture = ExtResource( 3 )
+frames = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -47,4 +65,5 @@ wait_time = 6.283
 autostart = true
 
 [connection signal="input_event" from="." to="." method="_on_Bubble_input_event"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]

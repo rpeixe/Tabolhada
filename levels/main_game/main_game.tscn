@@ -7,6 +7,7 @@
 [ext_resource path="res://levels/main_game/spawner.gd" type="Script" id=5]
 [ext_resource path="res://themes/MainTheme.tres" type="Theme" id=6]
 [ext_resource path="res://buttons/home_button/home_icon.png" type="Texture" id=7]
+[ext_resource path="res://dog/dog.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 10 )
@@ -17,37 +18,8 @@ extents = Vector2( 10, 360 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 55, 32.5 )
 
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="MainGame" type="Node"]
 script = ExtResource( 3 )
-
-[node name="Spawner" type="Node" parent="."]
-script = ExtResource( 5 )
-
-[node name="ShortTimer" type="Timer" parent="Spawner"]
-wait_time = 0.65
-
-[node name="LongTimer" type="Timer" parent="Spawner"]
-wait_time = 2.0
-autostart = true
-
-[node name="Bubbles" type="Node" parent="Spawner"]
-
-[node name="Spawner1" type="Node2D" parent="Spawner"]
-position = Vector2( 360, 600 )
-
-[node name="Spawner2" type="Node2D" parent="Spawner"]
-position = Vector2( 640, 600 )
-
-[node name="Spawner3" type="Node2D" parent="Spawner"]
-position = Vector2( 920, 600 )
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -84,47 +56,29 @@ autostart = true
 wait_time = 20.0
 autostart = true
 
-[node name="QuestionBoard" type="KinematicBody2D" parent="."]
-position = Vector2( 640, 360 )
-script = ExtResource( 4 )
+[node name="Dog" parent="." instance=ExtResource( 8 )]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestionBoard"]
-position = Vector2( 0, -0.5 )
-shape = SubResource( 3 )
-disabled = true
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource( 5 )
 
-[node name="Panel" type="Panel" parent="QuestionBoard"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -55.0
-margin_top = -32.5
-margin_right = 55.0
-margin_bottom = 32.5
-rect_min_size = Vector2( 110, 65 )
-mouse_filter = 2
+[node name="ShortTimer" type="Timer" parent="Spawner"]
+wait_time = 0.65
 
-[node name="Multiplication" type="Label" parent="QuestionBoard"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -54.0
-margin_top = -20.0
-margin_right = 54.0
-margin_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 20, 17.5 )
-theme = ExtResource( 6 )
-text = "10x10"
-align = 1
-valign = 1
-
-[node name="Timer" type="Timer" parent="QuestionBoard"]
-wait_time = 6.283
+[node name="LongTimer" type="Timer" parent="Spawner"]
+wait_time = 2.0
 autostart = true
+
+[node name="Bubbles" type="Node" parent="Spawner"]
+
+[node name="Spawner1" type="Node2D" parent="Spawner"]
+position = Vector2( 360, 600 )
+
+[node name="Spawner2" type="Node2D" parent="Spawner"]
+position = Vector2( 640, 600 )
+
+[node name="Spawner3" type="Node2D" parent="Spawner"]
+position = Vector2( 920, 600 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -355,17 +309,53 @@ margin_right = 182.0
 margin_bottom = 137.0
 text = "Sair"
 
-[node name="Dog" type="Node2D" parent="."]
-position = Vector2( 1033, 578 )
+[node name="QuestionBoard" type="KinematicBody2D" parent="."]
+position = Vector2( 640, 360 )
+script = ExtResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Dog"]
-frames = SubResource( 4 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestionBoard"]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Panel" type="Panel" parent="QuestionBoard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -32.5
+margin_right = 55.0
+margin_bottom = 32.5
+rect_min_size = Vector2( 110, 65 )
+mouse_filter = 2
+
+[node name="Multiplication" type="Label" parent="QuestionBoard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -20.0
+margin_right = 54.0
+margin_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 20, 17.5 )
+theme = ExtResource( 6 )
+text = "10x10"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="QuestionBoard"]
+wait_time = 6.283
+autostart = true
 
 [connection signal="result_changed" from="." to="Spawner" method="_on_MainGame_result_changed"]
-[connection signal="timeout" from="Spawner/ShortTimer" to="Spawner" method="_on_ShortTimer_timeout"]
-[connection signal="timeout" from="Spawner/LongTimer" to="Spawner" method="_on_LongTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="ScoreResetTimer" to="." method="_on_ScoreResetTimer_timeout"]
+[connection signal="timeout" from="Spawner/ShortTimer" to="Spawner" method="_on_ShortTimer_timeout"]
+[connection signal="timeout" from="Spawner/LongTimer" to="Spawner" method="_on_LongTimer_timeout"]
 [connection signal="button_up" from="UI/HBoxContainer/Buttons/HomeButton" to="." method="_on_HomeButton_button_up"]
 [connection signal="button_up" from="UI/QuitGamePopup/MarginContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_button_up"]
 [connection signal="button_up" from="UI/QuitGamePopup/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_CancelButton_button_up"]

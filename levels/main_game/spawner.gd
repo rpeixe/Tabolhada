@@ -9,6 +9,8 @@ var guaranteed_bubble
 var current_result
 onready var spawner = [$Spawner1, $Spawner2, $Spawner3]
 var current_spawner = 0
+onready var main_game = $".."
+onready var dog = $"%Dog"
 
 
 func random_bubble_value():
@@ -33,7 +35,11 @@ func _on_ShortTimer_timeout():
 	var bubble_value
 	
 	$Bubbles.add_child(new_bubble)
-	new_bubble.connect("bubble_popped", get_parent(), "on_bubble_popped")
+	main_game.connect("result_changed", new_bubble, "on_result_changed")
+	new_bubble.connect("correct_bubble_popped", main_game, "on_correct_bubble_popped")
+	new_bubble.connect("wrong_bubble_popped", main_game, "on_wrong_bubble_popped")
+	new_bubble.connect("correct_bubble_popped", dog, "on_correct_bubble_popped")
+	new_bubble.connect("wrong_bubble_popped", dog, "on_wrong_bubble_popped")
 	new_bubble.global_position = spawner[current_spawner % 3].global_position
 	current_spawner += 1
 	
@@ -42,7 +48,7 @@ func _on_ShortTimer_timeout():
 	else:
 		bubble_value = random_bubble_value()
 		
-	new_bubble.init(bubble_value)
+	new_bubble.init(bubble_value, current_result)
 	
 	count += 1
 	if count == bubbles_per_wave:

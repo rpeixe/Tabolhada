@@ -1,5 +1,5 @@
 extends AudioStreamPlayer
 
 
-func _on_PopSound_finished():
+func _on_BarkSound_finished():
 	queue_free()
