@@ -7,8 +7,6 @@ var num_2
 var result
 var score = 0
 var multiplier = 1
-var pop_sound_correct = preload("res://sounds/sfx/bubble_pop_sound/pop_sound_correct.tscn")
-var pop_sound_wrong = preload("res://sounds/sfx/bubble_pop_sound/pop_sound_wrong.tscn")
 var main_menu = "res://levels/main_menu/main_menu.tscn"
 
 signal result_changed(value)
@@ -39,15 +37,12 @@ func increase_score():
 		set_multiplier(multiplier + 1)
 	$"%Score".text = str(score)
 
-func on_bubble_popped(value):
-	var sound
-	if value == result:
-		increase_score()
-		sound = pop_sound_correct.instance()
-	else:
-		set_multiplier(1)
-		sound = pop_sound_wrong.instance()
-	add_child(sound)
+func on_correct_bubble_popped():
+	increase_score()
+	randomize_numbers()
+	
+func on_wrong_bubble_popped():
+	set_multiplier(1)
 	randomize_numbers()
 
 func _on_ScoreResetTimer_timeout():
