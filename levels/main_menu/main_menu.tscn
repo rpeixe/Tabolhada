@@ -35,10 +35,19 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Instruções"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+[node name="Credits" type="Button" parent="Buttons"]
 margin_top = 102.0
 margin_right = 163.0
-margin_bottom = 152.0
+margin_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 50, 10 )
+text = "Créditos"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+margin_top = 153.0
+margin_right = 163.0
+margin_bottom = 203.0
 
 [node name="QuitGame" type="Button" parent="Buttons/HBoxContainer"]
 margin_right = 109.0
@@ -57,4 +66,5 @@ margin_bottom = 50.0
 
 [connection signal="button_up" from="Buttons/StartGame" to="." method="_on_StartGame_button_up"]
 [connection signal="pressed" from="Buttons/Instructions" to="." method="_on_Instructions_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="button_up" from="Buttons/HBoxContainer/QuitGame" to="." method="_on_QuitGame_button_up"]
