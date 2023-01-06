@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://buttons/mute_button/mute_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://themes/BoxStyle.tres" type="StyleBox" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://themes/MainTheme.tres" type="Theme" id=6]
 [ext_resource path="res://buttons/home_button/home_icon.png" type="Texture" id=7]
 [ext_resource path="res://dog/dog.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/main_game/game_background.jpg" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 10 )
@@ -20,6 +21,11 @@ extents = Vector2( 55, 32.5 )
 
 [node name="MainGame" type="Node"]
 script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
 
 [node name="Borders" type="Node2D" parent="."]
 
