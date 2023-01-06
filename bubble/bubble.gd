@@ -63,7 +63,7 @@ func pop_bubble():
 	else:
 		emit_signal("wrong_bubble_popped")
 		sound = pop_sound_wrong.instance()
-		animation = "default"
+		animation = "pop_wrong"
 	get_parent().add_child(sound)
 	sprite.play(animation)
 	
