@@ -26,34 +26,34 @@ theme = ExtResource( 2 )
 
 [node name="StartGame" type="Button" parent="Buttons"]
 margin_right = 163.0
-margin_bottom = 47.0
+margin_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Jogar"
 
 [node name="Instructions" type="Button" parent="Buttons"]
-margin_top = 51.0
+margin_top = 45.0
 margin_right = 163.0
-margin_bottom = 98.0
+margin_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Instruções"
 
 [node name="Credits" type="Button" parent="Buttons"]
-margin_top = 102.0
+margin_top = 90.0
 margin_right = 163.0
-margin_bottom = 149.0
+margin_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Créditos"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
-margin_top = 153.0
+margin_top = 135.0
 margin_right = 163.0
-margin_bottom = 203.0
+margin_bottom = 185.0
 
 [node name="QuitGame" type="Button" parent="Buttons/HBoxContainer"]
 margin_right = 109.0
