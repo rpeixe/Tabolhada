@@ -1,6 +1,28 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=10 format=2]
 
 [ext_resource path="res://fonts/PrintBold-J5o.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://levels/main_menu/botão_apertado.png" type="Texture" id=2]
+[ext_resource path="res://levels/main_menu/botão_solto.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 345, 165 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 345, 165 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 345, 165 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 345, 165 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 345, 165 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
@@ -10,3 +32,8 @@ font_data = ExtResource( 1 )
 
 [resource]
 default_font = SubResource( 2 )
+Button/styles/disabled = SubResource( 3 )
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 6 )
+Button/styles/pressed = SubResource( 7 )
