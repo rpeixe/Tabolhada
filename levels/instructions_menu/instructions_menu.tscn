@@ -96,7 +96,7 @@ align = 1
 [node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
 margin_left = 282.0
 margin_top = 286.0
-margin_right = 392.0
+margin_right = 412.0
 margin_bottom = 327.0
 size_flags_horizontal = 4
 text = "Entendi!"
