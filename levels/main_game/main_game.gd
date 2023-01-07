@@ -54,21 +54,18 @@ func _on_GameTimer_timeout():
 	$UI/GameOverPopup.popup_centered()
 	get_tree().paused = true
 
-func _on_GameOverButton_button_up():
+func _on_GameOverButton_pressed():
 	get_tree().change_scene(main_menu)
 	get_tree().paused = false
 
-
-func _on_HomeButton_button_up():
+func _on_HomeButton_pressed():
 	$UI/QuitGamePopup.popup_centered()
 	get_tree().paused = true
 
-
-func _on_QuitButton_button_up():
+func _on_QuitButton_pressed():
 	get_tree().change_scene(main_menu)
 	get_tree().paused = false
 
-
-func _on_CancelButton_button_up():
+func _on_CancelButton_pressed():
 	$UI/QuitGamePopup.hide()
 	get_tree().paused = false

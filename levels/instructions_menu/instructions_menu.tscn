@@ -94,10 +94,11 @@ text = "O tempo não é seu aliado!"
 align = 1
 
 [node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-margin_left = 282.0
+margin_left = 272.0
 margin_top = 286.0
-margin_right = 412.0
+margin_right = 402.0
 margin_bottom = 327.0
+rect_min_size = Vector2( 130, 41 )
 size_flags_horizontal = 4
 text = "Entendi!"
 
