@@ -70,7 +70,7 @@ margin_top = 0.0
 margin_right = 163.0
 margin_bottom = 50.0
 
-[connection signal="button_up" from="Buttons/StartGame" to="." method="_on_StartGame_button_up"]
+[connection signal="pressed" from="Buttons/StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="pressed" from="Buttons/Instructions" to="." method="_on_Instructions_pressed"]
 [connection signal="pressed" from="Buttons/Credits" to="." method="_on_Credits_pressed"]
-[connection signal="button_up" from="Buttons/HBoxContainer/QuitGame" to="." method="_on_QuitGame_button_up"]
+[connection signal="pressed" from="Buttons/HBoxContainer/QuitGame" to="." method="_on_QuitGame_pressed"]
