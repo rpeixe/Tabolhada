@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://themes/MainTheme.tres" type="Theme" id=2]
 [ext_resource path="res://buttons/mute_button/mute_button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/main_menu/menu_background.jpg" type="Texture" id=4]
+[ext_resource path="res://fonts/PrintBold-J5o.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 1 )
@@ -13,50 +22,62 @@ margin_right = 1280.0
 margin_bottom = 720.0
 texture = ExtResource( 4 )
 
-[node name="Buttons" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -81.5
-margin_top = -100.0
-margin_right = 81.5
-margin_bottom = 100.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 530.0
+margin_top = 232.0
+margin_right = 749.0
+margin_bottom = 488.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 219.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 1 )
+text = "TABOLHADA"
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 219.0
+margin_bottom = 256.0
 theme = ExtResource( 2 )
 
-[node name="StartGame" type="Button" parent="Buttons"]
-margin_right = 163.0
+[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+margin_right = 219.0
 margin_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Jogar"
 
-[node name="Instructions" type="Button" parent="Buttons"]
+[node name="Instructions" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
 margin_top = 45.0
-margin_right = 163.0
+margin_right = 219.0
 margin_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Instruções"
 
-[node name="Credits" type="Button" parent="Buttons"]
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
 margin_top = 90.0
-margin_right = 163.0
+margin_right = 219.0
 margin_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Créditos"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Buttons"]
 margin_top = 135.0
-margin_right = 163.0
+margin_right = 219.0
 margin_bottom = 185.0
 
-[node name="QuitGame" type="Button" parent="Buttons/HBoxContainer"]
-margin_right = 109.0
+[node name="QuitGame" type="Button" parent="CenterContainer/VBoxContainer/Buttons/HBoxContainer"]
+margin_right = 165.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -64,13 +85,13 @@ rect_pivot_offset = Vector2( 50, 10 )
 size_flags_horizontal = 3
 text = "Sair"
 
-[node name="MuteButton" parent="Buttons/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 113.0
+[node name="MuteButton" parent="CenterContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 169.0
 margin_top = 0.0
-margin_right = 163.0
+margin_right = 219.0
 margin_bottom = 50.0
 
-[connection signal="pressed" from="Buttons/StartGame" to="." method="_on_StartGame_pressed"]
-[connection signal="pressed" from="Buttons/Instructions" to="." method="_on_Instructions_pressed"]
-[connection signal="pressed" from="Buttons/Credits" to="." method="_on_Credits_pressed"]
-[connection signal="pressed" from="Buttons/HBoxContainer/QuitGame" to="." method="_on_QuitGame_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/Instructions" to="." method="_on_Instructions_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/HBoxContainer/QuitGame" to="." method="_on_QuitGame_pressed"]
